@@ -1,3 +1,4 @@
+Name: Senghak Heng
 # PiCar-X Autonomous Robot
 A robot rover built on the SunFounder PiCar-X kit and a Raspberry Pi Zero 2 W, in Python. It runs two ways: fully autonomous obstacle avoidance, or remote web control from a browser with a live camera feed. Object detection is planned next.
 
