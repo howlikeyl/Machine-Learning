@@ -1,4 +1,5 @@
 Name : Senghak Heng
+
 Titanic Survival Prediction
 
 A machine learning project that predicts whether a passenger survived the Titanic disaster using binary classification techniques including Logistic Regression and Random Forest.
