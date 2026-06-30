@@ -15,6 +15,7 @@ def move_forward(speed):
 
 def scan_obstacle():
     px.set_dir_servo_angle(0)
+
 def scan_surrounding():
     px.set_cam_pan_angle(-35) # turn left
     time.sleep(0.5)
@@ -25,6 +26,30 @@ def scan_surrounding():
     px.set_cam_pan_angle(0) # turn center
     return left, right
 
+cam_pan_angle = 0
+cam_tilt_angle = 0
+def move_camera(direction):
+    global cam_pan_angle, cam_tilt_angle
+    match direction:
+        case "up":
+            cam_tilt_angle += 5
+        case "down":
+            cam_tilt_angle -= 5
+        case "left":
+            cam_pan_angle -= 5
+        case "right":
+            cam_pan_angle += 5
+    if cam_tilt_angle > 30: 
+        cam_tilt_angle = 30
+    elif cam_tilt_angle < -30: 
+        cam_tilt_angle = -30
+    if cam_pan_angle > 30:
+        cam_pan_angle = 30
+    elif cam_pan_angle < -30:
+        cam_pan_angle = -30
+    px.set_cam_pan_angle(cam_pan_angle)
+    px.set_cam_tilt_angle(cam_tilt_angle)
+        
 def move(direction):
     match direction:
         case "forward": 
@@ -39,6 +64,12 @@ def move(direction):
         case "right":
             px.set_dir_servo_angle(35)
             px.forward(30)
+        case "backward_left":
+            px.set_dir_servo_angle(-35)
+            px.backward(30)
+        case "backward_right":
+            px.set_dir_servo_angle(35)
+            px.backward(30)
         case "stop":
             px.stop()
 
@@ -69,6 +100,3 @@ if __name__ == "__main__":
         px.set_cam_tilt_angle(0)
     
         
-
-
-
