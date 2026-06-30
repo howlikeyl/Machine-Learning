@@ -3,7 +3,9 @@ from flask import Flask, Response, render_template
 from picamera2 import Picamera2
 import cv2
 import time
+from picarx import Picarx
 
+px = Picarx()
 camera = Picamera2()
 camera.configure(camera.create_preview_configuration(main={"size": (640, 480)}))
 camera.start()
@@ -49,7 +51,12 @@ def handle_camera(direction):
     else:
         return "invalid"
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
-        
+    try:
+        app.run(host='0.0.0.0', port=5000)
+    finally:
+        px.stop()
+        px.set_dir_servo_angle(0)
+        px.set_cam_pan_angle(0)
+        px.set_cam_tilt_angle(0)
 
           
