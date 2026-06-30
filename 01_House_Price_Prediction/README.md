@@ -1,3 +1,5 @@
+Name: Senghak Heng
+
 House Price Prediction
 
 A machine learning project that predicts California housing prices using multiple regression techniques, including Linear, Ridge, Lasso, and Polynomial Regression.
