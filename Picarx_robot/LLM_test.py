@@ -56,6 +56,7 @@ if '__main__' == __name__:
         response = model.generate_content(text)
         print(response.text)
         answer = response.text
+        answer = answer.replace("*", "")  # remove asterisks from the answer
         tts = gTTS(answer)              # convert text to speech
         tts.save("answer.mp3")         # save it as an audio file    
         os.system("mpg123 -a plughw:1,0 answer.mp3")
